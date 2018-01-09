@@ -45,7 +45,7 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<title>Simple Chat</title>
-	<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../chatPages/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript">
 		// <![CDATA[
 		$(document).ready(function(){
