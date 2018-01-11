@@ -1,0 +1,39 @@
+/*UNIVERSIAL BASE STYLE FOR ALL PAGES*/
+
+/*Theme Colors*/
+
+body{
+	--accent: #C06104;
+	--lightPeach: #EDD8CD;
+	--lightGray: #CDCDCD;
+}
+W
+/*Usefull Classes*/
+.center{ text-align: center; }
+.nopadding{	padding: 0; }
+
+/*Navbar Style*/
+.navbar{	background: #000; }
+
+/*Footer Style*/
+.footer{
+  line-height: 7vh;
+  background: #000;
+}
+
+.footerIcon{
+	widows: 4vh;
+	height: 4vh;
+}
+
+@media (min-width: 768px) {
+  .navbar-brand.abs{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0.5rem;
+    text-align: center;
+    margin:0 auto;
+  }
+}
+
