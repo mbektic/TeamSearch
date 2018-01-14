@@ -1,16 +1,28 @@
 /*UNIVERSIAL BASE STYLE FOR ALL PAGES*/
-
 /*Theme Colors*/
-
 body{
 	--accent: #C06104;
 	--lightPeach: #EDD8CD;
 	--lightGray: #CDCDCD;
 }
-W
+
+strong{
+  color: #004cc3;  
+}
+
+.btn{
+  background: #004cc3;
+  color: #fff;
+}
+
 /*Usefull Classes*/
 .center{ text-align: center; }
-.nopadding{	padding: 0; }
+.noPadding{	padding: 0; }
+.flexWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /*Navbar Style*/
 .navbar{	background: #000; }

@@ -1,0 +1,102 @@
+html{
+  background-color: #333;
+}
+
+/*Body Top Style*/
+#bodyTop{
+  text-align: center;
+}
+
+#bodyTop{
+  padding: 3%;
+  background: url("/assets/images/home/headerImage.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+#bodyTopContent{
+  background: #A2ABD4;
+  padding: 2%;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid #004cc3;
+  box-shadow: 15px 10px rgba(0,0,0,.30);
+  border-radius: 10px;
+}
+
+/*bodyBottom style*/
+#bodyBottom{
+  padding-bottom: 7vh;
+  background-color: #333;
+  border-top: 10px solid #004cc3;
+}
+
+#bodyBottom h3{
+  color: #e5e5e5;
+  text-align: center;
+}
+
+.titleWrapper{
+  width: 30%;
+  border-bottom: 4px solid #004cc3;
+  margin: 1%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius:360px;
+}
+
+/*gameBox style*/
+.gameBox{ 
+  width: 25%;
+  height: 20vh;
+  margin: 1%;
+  border-radius: 10px;
+  box-shadow: 8px 8px rgba(0,0,0,.30);
+}
+
+.gameBox a{
+  display: block;
+  height: 100%;
+  outline: 0;
+}
+
+#csgoBox{
+  background: url("http://media.steampowered.com/apps/csgo/blog/images/fb_image.png?v=5");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#lolBox{
+  background: url("http://media.comicbook.com/2017/06/background-1002091.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#pubgBox{
+  background: url("https://res.cloudinary.com/lmn/image/upload/c_limit,h_360,w_640/e_sharpen:100/f_auto,fl_lossy,q_auto/v1/gameskinnyc/p/u/b/pubg-6efcd.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#fortniteBox{
+  background: url("https://media.playstation.com/is/image/SCEA/fortnite-listing-thumb-01-ps4-us-24may17?$Icon$");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  #bodyTopContent{
+    width: 95%;
+  }
+  
+  .titleWrapper{
+    width: 80%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+  }
+}
