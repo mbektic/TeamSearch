@@ -3,4 +3,16 @@
 <file name="headerImage.jpg" server="138.197.5.88:443//var/www/html/subSites/teamSearch/" local="131600966840000000" remote="131601674240000000" Dst="1" />
 <file name="headerImage.jpg" server="138.197.5.88:443//var/www/html/" local="131601835460000000" remote="131603757680000000" Dst="1" />
 <file name="headerImage.jpg" server="138.197.5.88:443//var/www/html/testing/" local="131601835460000000" remote="131601835460000000" Dst="1" />
+<file name="generalBox.jpg" server="138.197.5.88:443//var/www/html/" local="131604340020000000" remote="131604342270000000" Dst="1" />
+<file name="lolBox.jpg" server="138.197.5.88:443//var/www/html/" local="131604341340000000" remote="131604342280000000" Dst="1" />
+<file name="pubgBox.jpg" server="138.197.5.88:443//var/www/html/" local="131604341260000000" remote="131604342280000000" Dst="1" />
+<file name="csgoBox.jpg" server="138.197.5.88:443//var/www/html/" local="131604341020000000" remote="131604342270000000" Dst="1" />
+<file name="rollplayBox.jpg" server="138.197.5.88:443//var/www/html/" local="131604341160000000" remote="131604342270000000" Dst="1" />
+<file name="fortniteBox.jpg" server="138.197.5.88:443//var/www/html/" local="131604341940000000" remote="131604342280000000" Dst="1" />
+<file name="generalBox.jpg" server="138.197.5.88:443//var/www/html/testing/" local="131604340020000000" remote="131604342840000000" Dst="1" />
+<file name="csgoBox.jpg" server="138.197.5.88:443//var/www/html/testing/" local="131604341020000000" remote="131604342840000000" Dst="1" />
+<file name="rollplayBox.jpg" server="138.197.5.88:443//var/www/html/testing/" local="131604341160000000" remote="131604342840000000" Dst="1" />
+<file name="pubgBox.jpg" server="138.197.5.88:443//var/www/html/testing/" local="131604341260000000" remote="131604342840000000" Dst="1" />
+<file name="lolBox.jpg" server="138.197.5.88:443//var/www/html/testing/" local="131604341340000000" remote="131604342850000000" Dst="1" />
+<file name="fortniteBox.jpg" server="138.197.5.88:443//var/www/html/testing/" local="131604341940000000" remote="131604342850000000" Dst="1" />
 </dwsync>

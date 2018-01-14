@@ -1,13 +1,10 @@
 /*UNIVERSIAL BASE STYLE FOR ALL PAGES*/
-/*Theme Colors*/
-body{
-	--accent: #C06104;
-	--lightPeach: #EDD8CD;
-	--lightGray: #CDCDCD;
-}
-
+/*Body Style*/
 strong{
   color: #004cc3;  
+}
+a{
+  outline: 0;
 }
 
 .btn{
