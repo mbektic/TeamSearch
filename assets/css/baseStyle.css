@@ -23,6 +23,7 @@ a{
 
 /*Navbar Style*/
 .navbar{	background: #000; }
+.nav-item{ z-index: 20; }
 
 /*Footer Style*/
 .footer{
