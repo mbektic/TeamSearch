@@ -12,24 +12,43 @@ html{
   background: url("/assets/images/home/headerImage.jpg");
   background-repeat: no-repeat;
   background-size:cover;
+  padding-top:0;
 }
 
 #bodyTopContent{
-  background: #A2ABD4;
+  background: rgba(0,0,0,.55);
+  color: white;
   padding: 2%;
-  width: 60%;
+  padding-top: 5%;
+  width: 50%;
   margin-left: auto;
   margin-right: auto;
-  border: 5px solid #004cc3;
   box-shadow: 15px 10px rgba(0,0,0,.30);
   border-radius: 10px;
+}
+
+#bodyTopContent p{
+  line-height: 2.5em;
+}
+
+#bodyTopContent h1{
+  margin-bottom: 2%;
+}
+
+#bodyTopButtons a{
+  width: 15%;
+  margin: 2%;
+}
+
+#bodyTopButtons a:hover{
+  color: white;
 }
 
 /*bodyBottom style*/
 #bodyBottom{
   padding-bottom: 10vh;
-  background-color: #333;
-  border-top: 10px solid #004cc3;
+  background-color: #111;
+    border-top: 10px solid #111;
 }
 
 #bodyBottom h3{
@@ -38,9 +57,11 @@ html{
 }
 
 .titleWrapper{
+  font-weight: bolder;
+  text-transform: uppercase;
   width: 30%;
-  border-bottom: 4px solid #004cc3;
   margin: 1%;
+  padding-top: 3%;
   margin-right: auto;
   margin-left: auto;
   border-radius:360px;
@@ -48,9 +69,9 @@ html{
 
 /*gameBox style*/
 .gameBox{ 
-  width: 25%;
-  height: 25vh;
-  margin: 1%;
+  width: 20%;
+  height: 20vh;
+  margin: 2%;
   border-radius: 10px;
   box-shadow: 8px 8px rgba(0,0,0,.30);
 }
@@ -106,6 +127,11 @@ html{
 @media (max-width: 768px) {
   #bodyTopContent{
     width: 95%;
+  }
+  
+  #bodyTopButtons a{
+    width: 30%;
+    margin: 2%;
   }
   
   .titleWrapper{

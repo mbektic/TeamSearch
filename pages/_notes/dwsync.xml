@@ -8,8 +8,8 @@
 <file name="jquery-1.4.2.min.js" server="138.197.5.88:443//var/www/html/" local="131601835480000000" remote="131603757650000000" Dst="1" />
 <file name="messages.json" server="138.197.5.88:443//var/www/html/" local="131601835480000000" remote="131603757650000000" Dst="1" />
 <file name="setup.sh" server="138.197.5.88:443//var/www/html/" local="131601835480000000" remote="131603757650000000" Dst="1" />
-<file name="index.php" server="138.197.5.88:443//var/www/html/testing/" local="131601835480000000" remote="131601835470000000" Dst="1" />
-<file name="jquery-1.4.2.min.js" server="138.197.5.88:443//var/www/html/testing/" local="131601835480000000" remote="131601835470000000" Dst="1" />
-<file name="messages.json" server="138.197.5.88:443//var/www/html/testing/" local="131601835480000000" remote="131601835470000000" Dst="1" />
-<file name="setup.sh" server="138.197.5.88:443//var/www/html/testing/" local="131601835480000000" remote="131601835470000000" Dst="1" />
+<file name="index.php" server="138.197.5.88:443//var/www/html/testing/" local="131601703940000000" remote="131606977080000000" Dst="1" />
+<file name="jquery-1.4.2.min.js" server="138.197.5.88:443//var/www/html/testing/" local="131606975033667619" remote="131606977080000000" Dst="1" />
+<file name="messages.json" server="138.197.5.88:443//var/www/html/testing/" local="131600090570000000" remote="131606977090000000" Dst="1" />
+<file name="setup.sh" server="138.197.5.88:443//var/www/html/testing/" local="131606975033707715" remote="131606977090000000" Dst="1" />
 </dwsync>
