@@ -1,0 +1,95 @@
+/*Base Styling for Chat Pages*/
+/*Base page setup*/
+html, body{
+    height: 100vh;
+}
+ul#messages > li.pending{
+    display: none;
+}
+
+
+#bodyContainer,#chatWrapper{
+    max-height: 90vh;
+}
+
+body{
+    background: url("/assets/images/home/headerImage.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+input{
+    background: #111;
+    color: #e5e5e5;
+    border: 2px solid #004cc3;
+}
+
+/*Chat setup*/
+#chatWrapper{
+    background: rgba(0,0,0,.55);
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    height:75vh;
+    color: white;
+    padding: 2%;
+    box-shadow: 15px 10px rgba(0,0,0,.30);
+    border-radius: 10px;
+}
+
+#chatWrapper h1{
+    padding-bottom: 2%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+ul#messages {
+    background: #111;
+    color: #e5e5e5;
+    height: 70%;
+    overflow: auto;
+    padding: 0 3px;
+    border: 2px solid #004cc3;
+}
+
+#messages li {
+    margin: 0.35em 0;
+    padding: 0;
+    font-size: 1.5em;
+}
+
+#messages small {
+    display: block;
+    font-size: 0.59em;
+    color: gray;
+}
+
+ul#messages li.pending {
+    color: #aaa;
+}
+
+#userForm p {
+    position: relative;
+    margin: 0.5em 0;
+    padding: 0;
+}
+
+#userForm p button {
+    position: absolute;
+    top: 0;
+    right: 0.5em;
+    bottom: 0px;
+}
+
+#messageBox input{
+    width: 100%;
+    margin-bottom: 1%;
+}
+
+::-webkit-scrollbar {
+    width: .2em;
+    height: 1em;
+    display: none;
+}

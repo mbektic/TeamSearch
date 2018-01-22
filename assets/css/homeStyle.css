@@ -48,12 +48,13 @@ html{
 #bodyBottom{
   padding-bottom: 10vh;
   background-color: #111;
-    border-top: 10px solid #111;
+  border-top: 10px solid #111;
 }
 
 #bodyBottom h3{
   color: #e5e5e5;
   text-align: center;
+  margin-top: -5%;
 }
 
 .titleWrapper{
@@ -62,9 +63,11 @@ html{
   width: 30%;
   margin: 1%;
   padding-top: 3%;
+  padding-bottom: 1%; 
   margin-right: auto;
   margin-left: auto;
   border-radius:360px;
+  border-bottom: 4px solid #004cc3;
 }
 
 /*gameBox style*/
@@ -140,3 +143,4 @@ html{
     margin-top: 5%;
   }
 }
+
