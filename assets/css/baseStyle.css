@@ -19,9 +19,9 @@ a{
 .center{ text-align: center; }
 .noPadding{	padding: 0; }
 .flexWrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*Navbar Style*/
@@ -30,13 +30,13 @@ a{
 
 /*Footer Style*/
 .footer{
-  line-height: 7vh;
+  height:56px;
   background: #000;
 }
 
 .footerIcon{
-	widows: 4vh;
-	height: 4vh;
+  height: calc(42px);
+  margin-top: 7px;
 }
 
 @media (min-width: 768px) {

@@ -48,7 +48,8 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
 
     <!--Stylesheets-->
     <link rel="stylesheet" href="/assets/css/baseStyle.css">
-    <link rel="stylesheet" href="/testing/assets/css/chatBaseStyle.css">
+    <link rel="stylesheet" href="/assets/css/chatBaseStyle.css">
+    <link rel="stylesheet" href="/assets/css/perfect-scrollbar.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
@@ -89,7 +90,7 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
 <section id="bodyContainer">
     <!--Chat Message Section start-->
     <div id="chatWrapper">
-        <h1><strong>Chat Name</strong></h1>
+        <h3><strong>Counter-Strike: Global Offensive</strong></h3>
 
         <ul id="messages">
             <li>loading…</li>
@@ -178,6 +179,8 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/assets/js/jquery-1.4.2.min.js"></script>
+<script src="/assets/js/perfect-scrollbar.js"></script>
+
 <script type="text/javascript">
     // <![CDATA[
     $(document).ready(function(){
@@ -242,7 +245,7 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                 }});
         };
 
-        // Kick of the poll function and repeat it every two seconds
+        // Kick of the poll function and repeat it every 1/10 seconds
         poll_for_new_messages();
         setInterval(poll_for_new_messages, 100);
     });
