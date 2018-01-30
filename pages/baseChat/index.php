@@ -16,10 +16,10 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
     $next_id = (count($messages) > 0) ? $messages[count($messages) - 1]['id'] + 1 : 0;
 
     if($messages[count($messages) - 1]['name'] != $_POST['name']){
-        $messages[] = array('id' => $next_id, 'time' => time(), 'name' => $_POST['name'], 'content' => $_POST['content']);
+        $messages[] = array('id' => $next_id, 'time' => time(), 'name' => $_POST['name'], 'content' => $_POST['content'], 'imgUrl' => $_POST['imgUrl']);
     }
     else if($messages[count($messages) - 1]['content'] != $_POST['content']){
-        $messages[] = array('id' => $next_id, 'time' => time(), 'name' => $_POST['name'], 'content' => $_POST['content']);
+        $messages[] = array('id' => $next_id, 'time' => time(), 'name' => $_POST['name'], 'content' => $_POST['content'], 'imgUrl' => $_POST['imgUrl']);
     }
 
     // Remove old messages if necessary to keep the buffer size
@@ -95,7 +95,7 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                     <div class="titleWrapper">
                         <h4>All Chats</h4>
                     </div>
-                    <div id="chatHolder">
+                    <div id="otherChatHolder">
 
                     </div>
                 </div><!--Other Chats Section End-->
@@ -104,21 +104,34 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                 <div id="chatWrapper" class="col-6">
                     <h1><strong>Chat Name</strong></h1>
 
-                    <ul id="messages">
-                        <li>loading…</li>
-                    </ul>
+                    <div id="chatHolder">
+                        <ul id="messages" >
+                            <li>loading…</li>
+                        </ul>
+                    </div>
 
                     <form id="userForm" action="<?= htmlentities($_SERVER['PHP_SELF'], ENT_COMPAT, 'UTF-8'); ?>" method="post">
-                        <p id="messageBox">
-                            <input type="text" name="content" id="content" />
-                        </p>
-                        <p id="nameBox">
-                            <label>
-                                Name:
-                                <input type="text" name="name" id="name"  />
-                            </label>
+                            <p id="messageBox">
+                                <input type="text" name="content" id="content" />
+                            </p>
+
+                        <div id="formRow">
+
+                            <p id="nameBox">
+                                <label>
+                                    Avatar:
+                                    <input type="text" name="name" id="name" />
+                                </label>
+                            </p>
+
+                            <p id="nameBox">
+                                <label>
+                                    Name:
+                                    <input type="text" name="name1" id="name1" />
+                                </label>
+                            </p>
                             <button class="btn" type="submit">Send</button>
-                        </p>
+                        </div>
                     </form>
                 </div>
 
@@ -128,7 +141,6 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                         <h4>Online Users</h4>
                     </div>
                 </div><!--Online Users Section End-->
-
             </div>
         </section><!--bodyContainer end-->
 
@@ -147,6 +159,9 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+        <script src="/assets/js/perfect-scrollbar.js"></script>
         <script>
             var doStuff;
 
@@ -163,10 +178,10 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                 var ca = decodedCookie.split(';');
                 for(var i = 0; i <ca.length; i++) {
                     var c = ca[i];
-                    while (c.charAt(0) == ' ') {
+                    while (c.charAt(0) === ' ') {
                         c = c.substring(1);
                     }
-                    if (c.indexOf(name) == 0) {
+                    if (c.indexOf(name) === 0) {
                         return c.substring(name.length, c.length);
                     }
                 }
@@ -175,32 +190,45 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
 
             if(!doStuff) {
                 var username = getCookie("name");
+                var img = getCookie("img");
 
-                if(username != "" && username != null){
-                    $('#name').load('#name', function () {
-                        $("#name[type='text']").val(username.toString());
+                if(username !== "" && username != null){
+                    $('#name1').load('#name1', function () {
+                        $("#name1[type='text']").val(username.toString());
                     });
                 }
                 else {
                     var number = Math.floor(Math.random() * 999999) + 100000;
-                    $('#name').load('#name', function () {
-                        $("#name[type='text']").val("User" + number);
+                    $('#name1').load('#name1', function () {
+                        $("#name1[type='text']").val("User" + number);
                     });
                     setCookie("name", "User" + number, 365);
+                }
+
+                if(username !== "" && username != null){
+                    $('#name').load('#name1', function () {
+                        $("#name[type='text']").val(img.toString());
+                    });
                 }
                 //http://teamsearch.tk/testing/pages/baseChat/otherChats.html
 
                 //Loads other chats html
                 $.get('http://teamsearch.tk/testing/pages/baseChat/otherChats.html')
                     .done(function(data) {
-                        $('#chatHolder').html(data);
+                        $('#otherChatHolder').html(data);
                 });
 
                 //PS
-                const container = document.querySelector('#chatHolder');
-                const ps = new PerfectScrollbar(container, {
+                const otherChats = document.querySelector('#otherChatHolder');
+                const otherChatsPS = new PerfectScrollbar(otherChats, {
                     suppressScrollX: true,
                     maxScrollbarLength: 100
+                });
+                otherChatsPS.update();
+
+                const container = document.querySelector('#messages');
+                var ps = new PerfectScrollbar(container, {
+                    suppressScrollX: true
                 });
                 ps.update();
 
@@ -209,35 +237,43 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                 doStuff = true;
             }
 
+            $("#name1").on("input", function() {
+                setCookie("name", $("#name1").val(), 365);
+            });
+
             $("#name").on("input", function() {
-                setCookie("name", $("#name").val(), 365)
+                setCookie("img", $("#name").val(), 365);
             });
         </script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="/assets/js/jquery-1.4.2.min.js"></script>
-        <script src="/assets/js/perfect-scrollbar.js"></script>
 
         <script type="text/javascript">
             // <![CDATA[
             $(document).ready(function(){
                 // Remove the "loading…" list entry
-                $('ul#messages > li').remove();
+                // language=JQuery-CSS
+                var msgs = 'ul#messages';
+                $(msgs +'> li').remove();
 
                 $('form').submit(function(){
                     var form = $(this);
-                    var name =  form.find("input[name='name']").val();
-                    var content =  form.find("input[name='content']").val();
+                    var name =  form.find("input[name='name1']").val();
+                    var imgUrl = form.find("input[name='name']").val();
+                    var content = form.find("input[name='content']").val();
+
+                    console.log(imgUrl);
+
+                    if (imgUrl === '' || imgUrl === '') {
+                        imgUrl = "https://vignette.wikia.nocookie.net/leagueoflegends/images/9/97/Lizard_profileicon.png/revision/latest?cb=20170517190640";
+                    }
 
                     // Only send a new message if it's not empty (also it's ok for the server we don't need to send senseless messages)
-                    if (name == '' || content == '') {
+                    if (name === '' || content === '') {
                         return false;
                     }
 
                     // Append a "pending" message (not yet confirmed from the server) as soon as the POST request is finished. The
                     // text() method automatically escapes HTML so no one can harm the client.
-                    $.post(form.attr('action'), {'name': name, 'content': content}, function(data, status){
+                    $.post(form.attr('action'), {'name': name, 'content': content, 'imgUrl': imgUrl}, function(data, status){
                         $('<li class="pending" />').text(content).prepend($('<small />').text(name)).appendTo('ul#messages');
                         $('ul#messages').scrollTop( $('ul#messages').get(0).scrollHeight );
                         form.find("input[name='content']").val('').focus();
@@ -269,16 +305,17 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                                 if (msg.id > last_message_id)
                                 {
                                     var date = new Date(msg.time * 1000);
-                                    $('<li/>').text(msg.content).
-                                    prepend( $('<small />').text(date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' ' + msg.name) ).
+                                    $('<li class=\"row\"/>').
+                                    prepend($('<span class=\"col-10\"><small>' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' ' + msg.name +'</small>' + msg.content + '</span>')).
+                                    prepend($('<span class=\"col-2\"><img src=\"'+msg.imgUrl+'\"></span>')).
                                     appendTo('ul#messages');
-                                    $('ul#messages').data('last_message_id', msg.id);
+                                    ps.update();
                                 }
                             }
 
                             // Remove all but the last 50 messages in the list to prevent browser slowdown with extremely large lists
                             // and finally scroll down to the newes message.
-                            $('ul#messages > li').slice(0, -50).remove();
+
                             $('ul#messages').scrollTop( $('ul#messages').get(0).scrollHeight );
                         }});
                 };

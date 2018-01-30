@@ -54,7 +54,12 @@ input{
 }
 
 #chatHolder{
-    max-height: 93%;
+    height: 65%;
+    overflow: hidden;
+    overflow-clip: auto;
+}
+
+#otherChatHolder{
     overflow: hidden;
     overflow-clip: auto;
 }
@@ -69,6 +74,10 @@ input{
     padding-top: 1%;
     text-align: center;
     text-transform: uppercase;
+}
+
+#messages{
+    height: 100% !important;
 }
 
 ul#messages {
@@ -86,6 +95,11 @@ ul#messages {
     font-size: 1.5em;
 }
 
+#messages li img{
+    display: block;
+    max-width: 100%;
+}
+
 #messages small {
     display: block;
     font-size: 0.59em;
@@ -100,6 +114,21 @@ ul#messages li.pending {
     position: relative;
     margin: 0.5em 0;
     padding: 0;
+}
+
+#userForm{
+    background: rgba(0,0,0,.55);
+    margin-top: -1px;
+    padding: 2%;
+    border: 2px solid #004cc3;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#formRow{
+    display: inline-flex;
+    justify-content:space-around;
+    width: 100%;
 }
 
 #userForm p button {
