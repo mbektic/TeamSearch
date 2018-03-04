@@ -209,25 +209,21 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                 }
 
                 //Loads other chats html
-                $.get('http://teamsearch.tk/testing/pages/baseChat/otherChats.html').done(function(data) {
-                    $('#otherChatHolder').html(data);
+                $.get('http://138.197.5.88/pages/baseChat/otherChats.html')
+                    .done(function(data) {
+                        $('#otherChatHolder').html(data);
                 });
 
-                //PS
-                const otherChats = document.querySelector('#otherChatHolder');
-                const otherChatsPS = new PerfectScrollbar(otherChats, {
-                    suppressScrollX: true,
-                    maxScrollbarLength: 100
-                });
-                otherChatsPS.update();
+                $.get('http://teamsearch.tk/pages/baseChat/otherChats.html')
+                    .done(function(data) {
+                        $('#otherChatHolder').html(data);
+                    });
 
                 const container = document.querySelector('#messages');
                 var ps = new PerfectScrollbar(container, {
                     suppressScrollX: true
                 });
                 ps.update();
-
-
 
                 doStuff = true;
             }
@@ -243,6 +239,10 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
         </script>
 
         <script type="text/javascript">
+            $.ajaxPrefilter(function( options, original_Options, jqXHR ) {
+                options.async = true;
+            });
+
             $(document).ready(function(){
                 var msgs = 'testing';
                 $(msgs +'> li').remove();
@@ -262,8 +262,6 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                         return false;
                     }
 
-                    // Append a "pending" message (not yet confirmed from the server) as soon as the POST request is finished. The
-                    // text() method automatically escapes HTML so no one can harm the client.
                     $.post(form.attr('action'), {'name': name, 'content': content, 'imgUrl': imgUrl}, function(data, status){
                         $('<li class="pending" />').text(content).prepend($('<small />').text(name)).appendTo('ul#messages');
                         $('ul#messages').scrollTop( $('ul#messages').get(0).scrollHeight );
@@ -280,8 +278,6 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                                 return;
 
                             $('ul#messages').empty();
-                            // Remove the pending messages from the list (they are replaced by the ones from the server later)
-                            //$('ul#messages > li.pending').remove();
 
                             // Get the ID of the last inserted message or start with -1 (so the first message from the server with 0 will
                             // automatically be shown).
@@ -299,19 +295,20 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                                     var date = new Date(msg.time * 1000);
                                     $('<li class=\"row\"/>').
                                     prepend($('<span class=\"col-10\"><small>' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' ' + msg.name +'</small>' + msg.content + '</span>')).
-                                    prepend($('<span class=\"col-2\"><img src=\"'+msg.imgUrl+'\"></span>')).
+                                    prepend($('<span class=\"col-2\"><img class="avatarImage" src=\"'+msg.imgUrl+'\"></span>')).
                                     appendTo('ul#messages');
                                     ps.update();
+                                    $('ul#messages').scrollTop( $('ul#messages').get(0).scrollHeight );
                                 }
                             }
-
-                            $('ul#messages').scrollTop( $('ul#messages').get(0).scrollHeight );
                         }});
                 };
 
                 // Kick of the poll function and repeat it every two seconds
 
-                window.onload = function () { setInterval(poll_for_new_messages, 100);};
+                $( document ).ready(function() {
+                    setInterval(poll_for_new_messages, 100);
+                });
             });
         </script>
     </body>
