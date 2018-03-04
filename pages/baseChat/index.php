@@ -247,11 +247,8 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
         </script>
 
         <script type="text/javascript">
-            // <![CDATA[
             $(document).ready(function(){
-                // Remove the "loading…" list entry
-                // language=JQuery-CSS
-                var msgs = 'ul#messages';
+                var msgs = 'testing';
                 $(msgs +'> li').remove();
 
                 $('form').submit(function(){
@@ -288,8 +285,9 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                             if (!messages)
                                 return;
 
+                            $('ul#messages').empty();
                             // Remove the pending messages from the list (they are replaced by the ones from the server later)
-                            $('ul#messages > li.pending').remove();
+                            //$('ul#messages > li.pending').remove();
 
                             // Get the ID of the last inserted message or start with -1 (so the first message from the server with 0 will
                             // automatically be shown).
@@ -321,8 +319,8 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                 };
 
                 // Kick of the poll function and repeat it every two seconds
-                poll_for_new_messages();
-                setInterval(poll_for_new_messages, 100);
+
+                window.onload = function () { setInterval(poll_for_new_messages, 100);};
             });
         </script>
     </body>
