@@ -110,7 +110,7 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                         </ul>
                     </div>
 
-                    <form id="userForm" action="<?= htmlentities($_SERVER['PHP_SELF'], ENT_COMPAT, 'UTF-8'); ?>" method="post">
+                    <form id="userForm" >
                             <p id="messageBox">
                                 <input type="text" name="content" id="content" />
                             </p>
@@ -130,6 +130,7 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                                     <input type="text" name="name1" id="name1" />
                                 </label>
                             </p>
+
                             <button class="btn" type="submit">Send</button>
                         </div>
                     </form>
@@ -199,23 +200,17 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                 }
                 else {
                     var number = Math.floor(Math.random() * 999999) + 100000;
-                    $('#name1').load('#name1', function () {
-                        $("#name1[type='text']").val("User" + number);
-                    });
+                    $("#name1[type='text']").val("User" + number);
                     setCookie("name", "User" + number, 365);
                 }
 
-                if(username !== "" && username != null){
-                    $('#name').load('#name1', function () {
-                        $("#name[type='text']").val(img.toString());
-                    });
+                if(img !== "" && img != null){
+                    $("#name[type='text']").val(img.toString());
                 }
-                //http://teamsearch.tk/testing/pages/baseChat/otherChats.html
 
                 //Loads other chats html
-                $.get('http://teamsearch.tk/testing/pages/baseChat/otherChats.html')
-                    .done(function(data) {
-                        $('#otherChatHolder').html(data);
+                $.get('http://teamsearch.tk/testing/pages/baseChat/otherChats.html').done(function(data) {
+                    $('#otherChatHolder').html(data);
                 });
 
                 //PS
@@ -238,6 +233,7 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
             }
 
             $("#name1").on("input", function() {
+                console.log("did stuff");
                 setCookie("name", $("#name1").val(), 365);
             });
 
@@ -256,8 +252,6 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                     var name =  form.find("input[name='name1']").val();
                     var imgUrl = form.find("input[name='name']").val();
                     var content = form.find("input[name='content']").val();
-
-                    console.log(imgUrl);
 
                     if (imgUrl === '' || imgUrl === '') {
                         imgUrl = "https://vignette.wikia.nocookie.net/leagueoflegends/images/9/97/Lizard_profileicon.png/revision/latest?cb=20170517190640";
@@ -295,7 +289,7 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                             if (last_message_id == null)
                                 last_message_id = -1;
 
-                            // Add a list entry for every incomming message, but only if we not already inserted it (hence the check for
+                            // Add a list entry for every incoming message, but only if we not already inserted it (hence the check for
                             // the newer ID than the last inserted message).
                             for(var i = 0; i < messages.length; i++)
                             {
@@ -310,9 +304,6 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                                     ps.update();
                                 }
                             }
-
-                            // Remove all but the last 50 messages in the list to prevent browser slowdown with extremely large lists
-                            // and finally scroll down to the newes message.
 
                             $('ul#messages').scrollTop( $('ul#messages').get(0).scrollHeight );
                         }});
