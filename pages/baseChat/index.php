@@ -225,6 +225,15 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                 });
                 ps.update();
 
+                var images = $("#messages img");
+                var loadedImgNum = 0;
+                images.on('load', function(){
+                    loadedImgNum += 1;
+                    if (loadedImgNum === images.length) {
+                        ps.update();
+                        $('ul#messages').scrollTop( $('ul#messages').get(0).scrollHeight );
+                    }
+                });
                 doStuff = true;
             }
 
@@ -264,7 +273,6 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
 
                     $.post(form.attr('action'), {'name': name, 'content': content, 'imgUrl': imgUrl}, function(data, status){
                         $('<li class="pending" />').text(content).prepend($('<small />').text(name)).appendTo('ul#messages');
-                        $('ul#messages').scrollTop( $('ul#messages').get(0).scrollHeight );
                         form.find("input[name='content']").val('').focus();
                     });
                     return false;
@@ -294,7 +302,7 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                                 {
                                     var date = new Date(msg.time * 1000);
                                     $('<li class=\"row\"/>').
-                                    prepend($('<span class=\"col-10\"><small>' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' ' + msg.name +'</small>' + msg.content + '</span>')).
+                                    prepend($('<span class=\"col-10\"><small>' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' ' + msg.name +'</small><p>' + msg.content + '</p></span>')).
                                     prepend($('<span class=\"col-2\"><img class="avatarImage" src=\"'+msg.imgUrl+'\"></span>')).
                                     appendTo('ul#messages');
                                     ps.update();
@@ -304,10 +312,10 @@ if ( isset($_POST['content']) and isset($_POST['name']) )
                         }});
                 };
 
-                // Kick of the poll function and repeat it every two seconds
-
+                // Kick of the poll function and repeat it every 1/10 second
                 $( document ).ready(function() {
                     setInterval(poll_for_new_messages, 100);
+
                 });
             });
         </script>
